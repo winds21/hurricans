@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信聊天记录生成器</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧编辑区域 -->
+        <div class="edit-panel">
+            <h2>编辑聊天内容</h2>
+            
+            <!-- 头像设置区域 -->
+            <div class="avatar-section">
+                <h3>头像设置</h3>
+                <div class="avatar-upload">
+                    <div class="avatar-item">
+                        <label>我的头像：</label>
+                        <div class="avatar-preview" id="myAvatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user1" alt="我的头像">
+                            <input type="file" accept="image/*" id="myAvatarInput">
+                        </div>
+                    </div>
+                    <div class="avatar-item">
+                        <label>对方头像：</label>
+                        <div class="avatar-preview" id="otherAvatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user2" alt="对方头像">
+                            <input type="file" accept="image/*" id="otherAvatarInput">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 昵称设置区域 -->
+            <div class="nickname-section">
+                <h3>昵称设置</h3>
+                <div class="nickname-input">
+                    <label>对方昵称：</label>
+                    <input type="text" id="otherNickname" placeholder="输入对方昵称">
+                </div>
+            </div>
+
+            <!-- 聊天内容编辑区域 -->
+            <div class="chat-edit-section">
+                <h3>聊天内容</h3>
+                <div class="message-list" id="messageList">
+                    <!-- 消息列表将通过JavaScript动态生成 -->
+                </div>
+                <div class="add-message">
+                    <textarea id="newMessage" placeholder="输入新消息内容..."></textarea>
+                    <div class="message-controls">
+                        <select id="messageSender">
+                            <option value="me">我</option>
+                            <option value="other">对方</option>
+                        </select>
+                        <input type="datetime-local" id="messageTime">
+                        <button id="addMessageBtn">添加消息</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 导出设置区域 -->
+            <div class="export-section">
+                <h3>导出设置</h3>
+                <div class="export-controls">
+                    <select id="exportFormat">
+                        <option value="png">PNG格式</option>
+                        <option value="jpg">JPG格式</option>
+                    </select>
+                    <select id="exportSize">
+                        <option value="full">完整界面</option>
+                        <option value="chat">仅聊天区域</option>
+                    </select>
+                    <button id="exportBtn">导出图片</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧预览区域 -->
+        <div class="preview-panel">
+            <!-- 状态栏 -->
+            <div class="status-bar">
+                <span class="time">15:39</span>
+                <div class="right">
+                    <i class="fas fa-signal"></i>
+                    <span>5G</span>
+                    <i class="fas fa-battery-full battery"></i>
+                    <span>89%</span>
+                </div>
+            </div>
+            
+            <!-- 微信头部 -->
+            <div class="wechat-header">
+                <div class="left">
+                    <span class="back">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <div class="title">
+                        <span class="contact-name" id="previewNickname">对方昵称</span>
+                    </div>
+                </div>
+                <span class="more">
+                    <i class="fas fa-ellipsis-h"></i>
+                </span>
+            </div>
+
+            <!-- 聊天区域 -->
+            <div class="wechat-chat" id="chatPreview">
+                <!-- 聊天内容将通过JavaScript动态生成 -->
+            </div>
+
+            <!-- 底部输入栏 -->
+            <div class="wechat-footer">
+                <div class="voice-btn">
+                    <i class="fas fa-microphone"></i>
+                </div>
+                <div class="input-area" contenteditable="true">
+                    发送消息...
+                </div>
+                <div class="emoji-btn">
+                    <i class="far fa-smile"></i>
+                </div>
+                <div class="more-btn">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
