@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -373,11 +374,145 @@ button:hover {
 /* 响应式设计 */
 @media (max-width: 768px) {
     .container {
+        flex-direction: column;
         margin: 0;
         height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .edit-panel {
+        flex: none;
+        height: auto;
+        max-height: 50vh;
+        padding: 12px;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .edit-panel h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .edit-panel h3 {
+        font-size: 16px;
+        margin: 10px 0 8px;
+    }
+
+    .avatar-upload {
+        gap: 12px;
+    }
+
+    .avatar-preview {
+        width: 60px;
+        height: 60px;
+    }
+
+    .message-controls {
+        flex-wrap: wrap;
+    }
+
+    .message-controls select,
+    .message-controls input[type="datetime-local"] {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+
+    .add-message textarea {
+        height: 80px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 14px;
     }
 
     .preview-panel {
+        flex: 1;
         max-width: none;
+        width: 100%;
+    }
+
+    /* 优化移动端触摸体验 */
+    .message-item {
+        padding: 10px;
+    }
+
+    .message-item button {
+        min-width: 44px;
+        min-height: 32px;
+    }
+
+    .wechat-footer {
+        height: 44px;
+    }
+
+    .wechat-footer .voice-btn,
+    .wechat-footer .emoji-btn,
+    .wechat-footer .more-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .wechat-footer .input-area {
+        min-height: 32px;
+        font-size: 15px;
+    }
+
+    /* 添加底部安全区域 */
+    .wechat-footer {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    /* 优化滚动体验 */
+    .message-list,
+    .wechat-chat {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 优化表单控件 */
+    input, select, textarea {
+        font-size: 16px; /* 防止iOS自动缩放 */
+    }
+}
+
+/* 针对更小屏幕的优化 */
+@media (max-width: 375px) {
+    .edit-panel {
+        padding: 8px;
+    }
+
+    .message-controls {
+        gap: 6px;
+    }
+
+    .export-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .export-controls select,
+    .export-controls button {
+        width: 100%;
+    }
+}
+
+/* 横屏模式优化 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        flex-direction: row;
+    }
+
+    .edit-panel {
+        width: 40%;
+        max-height: none;
+        border-right: 1px solid #e0e0e0;
+        border-bottom: none;
+    }
+
+    .preview-panel {
+        width: 60%;
     }
 } 
